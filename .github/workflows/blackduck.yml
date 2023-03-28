@@ -32,7 +32,7 @@ jobs:
 
       - name: Black Duck (Rapid scan)
         if: ${{ github.event_name == 'pull_request' }}
-        uses: synopsys-sig/detect-action@main
+        uses: synopsys-sig/detect-action@0.3.0
         # For pull requests, limit the feedback to policy violations newly introduced by code changes
         # within the PR. This option will compare the results found in the PR scan to the results found
         # in the last central full/intelligent scan, and only report the new violations. This is helpful
@@ -48,7 +48,7 @@ jobs:
         with:
             scan-mode: RAPID
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            detect-version: 7.12.0
+            detect-version: 8.7.0
             blackduck-url: ${{ secrets.BLACKDUCK_URL }}
             blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
 
