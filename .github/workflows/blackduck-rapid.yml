@@ -5,9 +5,9 @@ on:
   # Run Black Duck on pushes to main branches, and pull requests that are going
   # to be merged to main branches.
   push:
-    branches: [ master, main ]
+    branches: [ master, main, feature ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, feature ]
 
   # Allow ad-hoc, manual invocations of the Coverity workflow.
   workflow_dispatch:
