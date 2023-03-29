@@ -5,9 +5,9 @@ on:
   # Run Black Duck on pushes to main branches, and pull requests that are going
   # to be merged to main branches.
   push:
-    branches: [ master, main ]
+    branches: [ master, main, feature ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, feature ]
 
   # Allow ad-hoc, manual invocations of the Coverity workflow.
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Black Duck (Rapid scan)
-        uses: synopsys-sig/detect-action@v0.3.0
+        uses: synopsys-sig/detect-action@v0.3.4
         # You can use this option to configure a CA cert if using a self-hosted runner and self-signed
         # certificates on your Hub server. This option should point to a file on the local filesystem
         # with the CA chain cert
@@ -40,6 +40,6 @@ jobs:
         with:
             scan-mode: RAPID
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            detect-version: 7.12.0
+            detect-version: 8.7.0
             blackduck-url: ${{ secrets.BLACKDUCK_URL }}
             blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
